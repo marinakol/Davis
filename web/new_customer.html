@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title>New Customer page</title>
+        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
+
+    </head>
+    <body>
+        <div>New customers: Please register for online banking services</div>
+        
+        <nav>
+            <ul>
+                <li> <a href="index.html">Home</a></li>  
+                <li><a href="Login.html">Login</a></li>
+                <li><a href="new_customer.html">New Customer</a></li>
+                <li><a href="Account_activity.html">Account activity</a></li>
+                <li><a href="Transaction.html">Transactions</a></li>
+            </ul> 
+
+        </nav>
+
+        <form action="customerList" method="post">
+            <input type="hidden" name="action" value="add">        
+            <label class="pad_top">First Name:</label>
+            <input type="text" name="firstName" required><br>
+            <label class="pad_top">Last Name:</label>
+            <input type="text" name="lastName" required><br>
+            <label class="pad_top">Phone:</label>
+            <input type="tel" name="phone" required><br>
+            <label class="pad_top">Address:</label>
+            <input type="text" name="address" required><br>
+            <label class="pad_top">City:</label>
+            <input type="text" name="city" required><br>
+            <label class="pad_top">State:</label>
+            <input type="text" name="state" required><br>
+            <label class="pad_top">Zipcode:</label>
+            <input type="text" name="zipcode" required><br>
+            <label class="pad_top">Email:</label>
+            <input type="email" name="email" required><br>
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit" class="margin_left">
+        </form>
+    </body>
+</html>
+
