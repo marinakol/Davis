@@ -1,4 +1,3 @@
-
 package toba.login;
 
 import toba.business.*;
@@ -53,14 +52,12 @@ public class NewCustomerServlet extends HttpServlet {
                 message = "";
                 url = "/success.html";
                 UserDB.insert(user);
-                
+
             }
             request.setAttribute("user", user);
             request.setAttribute("message", message);
         }
-       getServletContext()
-                .getRequestDispatcher(url)
-               .forward(request, response);
+        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     @Override

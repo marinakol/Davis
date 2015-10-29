@@ -1,21 +1,13 @@
 /* The styles for the elements */
 body { 
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 200%;
+    font-size: 85%;
     margin-left: 2em;
     margin-right: 2em;
     width: 400px;
-}
-div {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 400%;
-    margin-left: 2em;
-    margin-right: 2em;
-    width: 400px;
-    
 }
 h1 {     
-    font-size: 200%;
+    font-size: 340%;
     color: teal;
     margin-bottom: .5em;    
 }
@@ -26,9 +18,9 @@ label {
     font-weight: bold;
 }
 input[type="text"], input[type="email"] {  /* An attribute selector */
-    width: 20em;
-    margin-left: 1em;    
-    margin-bottom: 1em;
+    width: 15em;
+    margin-left: 0.5em;    
+    margin-bottom: 0.5em;
 }
 span {
     margin-left: 0.5em;    
@@ -40,8 +32,8 @@ br {
 
 /* The styles for the classes */
 .pad_top {
-    padding-top: 0.5em;
+    padding-top: 0.25em;
 }
 .margin_left {
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
