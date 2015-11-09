@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:import url="/includes/header.html" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,3 +19,4 @@
         <p>Message: ${pageContext.exception.message}</p>
     </body>
 </html>
+<c:import url="/includes/footer.jsp" />

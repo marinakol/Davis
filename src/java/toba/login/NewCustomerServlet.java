@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import toba.business.User;
 import toba.data.UserDB;
 
@@ -38,19 +39,39 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zipcode = request.getParameter("zipcode");
             String email = request.getParameter("email");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            
 
             // store data in User object
-            User user = new User(firstName, lastName, phone, address, city, state, zipcode, email);
+            User user = new User(firstName, lastName, phone, address, city, state, zipcode, email, username, password);
+            // store the User object as a session attribute
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+        
+        // store the data in a User object
+       
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPhone(phone);
+        user.setAddress(address);
+        user.setCity(city);
+        user.setState(state);
+        user.setZipcode(zipcode);
+        user.setEmail(email);
+        user.setUsername(lastName + zipcode);
+        String temp_password = "welcome1";
+        user.setPassword(temp_password);
 
             // validate the parameters
             String message;
-            if (firstName == null || lastName == null || phone == null || address == null || city == null || state == null || zipcode == null || email == null
+            if (firstName == null || lastName == null || phone == null || address == null || city == null || state == null || zipcode == null || email == null 
                     || firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() || address.isEmpty() || city.isEmpty() || state.isEmpty() || zipcode.isEmpty() || email.isEmpty()) {
                 message = "Please fill out all the form fields.";
                 url = "/new_customer.html";
             } else {
                 message = "";
-                url = "/success.html";
+                url = "/success.jsp";
                 UserDB.insert(user);
 
             }

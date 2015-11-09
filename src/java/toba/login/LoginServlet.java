@@ -25,29 +25,11 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");
 
-        //get servlet config init params
-        String userID = "jsmith@toba.com";
-
-        String password = "letmein";
-
-        System.out.println("Username=" + user + "::pwd=" + pwd + " UserID: " + userID + "password: " + password);
-
-        if (userID.equals(user) && password.equals(pwd)) {
-            response.sendRedirect("account_activity.html");
-        } else {
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/login_failure.html");
-            PrintWriter out = response.getWriter();
-            out.println("<font color=red>Either user name or password is wrong.</font>");
-            rd.include(request, response);
-
+        
+            response.sendRedirect("password_reset.jsp");
+        
         }
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
+    
 
-}
