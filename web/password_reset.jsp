@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/includes/header.html" />
 
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -8,6 +9,11 @@
         <link rel="stylesheet" href="styles/main.css" type="text/css"/> 
     </head>
     <body>
+        <% String message = (String)request.getAttribute("msg");
+       if ( message != null) { %>
+        <h1 style="color:red; font-size:12px"><%out.print(message);%></h1>
+        <%}%>
+
         <div>Please reset your password</div>
         <nav>
             <ul>
@@ -28,15 +34,12 @@
             <input type="password" name="passwordNew" required><br>
             <label>&nbsp;</label>
             <input type="submit" value="Reset" class="margin_left">
-            
+
         </form>
 
     </body>
 </html>
 <c:import url="/includes/footer.jsp" />
-
-
-
 
 
 

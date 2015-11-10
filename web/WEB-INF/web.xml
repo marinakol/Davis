@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <context-param>
-        <param-name>username</param-name>
-        <param-value>jsmith@toba.com</param-value>
-    </context-param>
-    <context-param>
-        <param-name>password</param-name>
-        <param-value>letmein</param-value>
-    </context-param>
+    
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>toba.login.LoginServlet</servlet-class>

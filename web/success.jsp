@@ -1,7 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/includes/header.html" />
 
+<nav>
+            <ul>
+                <li> <a href="index.html">Home</a></li>  
+                <li><a href="login.html">Login</a></li>
+                <li><a href="new_customer.html">New Customer</a></li>
+                <li><a href="account_activity.html">Account activity</a></li>
+                <li><a href="transaction.html">Transactions</a></li>
+            </ul> 
 
+        </nav>
 <p>Here is the information that you entered:</p>
 <label>First Name:</label>
 <span>${user.firstName}</span><br>
