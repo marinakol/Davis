@@ -1,7 +1,8 @@
 
 
 <%@page import="toba.business.User"%>
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 
@@ -13,17 +14,7 @@
 
     </head>
     <body>
-        <%	String firstName = null;
-            String lastName = null;
 
-            if (session != null) {
-                User usr = (User)session.getAttribute("user");
-                if (usr != null) {
-                    firstName = usr.getFirstName();
-                    lastName = usr.getLastName();
-                }
-
-                if ((firstName != null) && (lastName != null)) {%>
         <h1>Customer account information</h1>
         <nav>
             <ul>
@@ -35,13 +26,18 @@
             </ul> 
 
         </nav>
-        <p>Welcome back, <%out.print(firstName + " " + lastName);%></p>
-        <%} else {%>
-        <h1>Not logged in</h1>	
-        <%}%>
-        <%} else {%>
-        <h1>Not logged in</h1>
-        <%}%>
+
+
+
+        <c:if test="${user.firstName != null}">
+            <p>Welcome back, <c:out value='${user.firstName}' /> <c:out value='${user.lastName}' /></p>
+        </c:if>
+        <c:if test="${user.firstName = null}">
+            <p>Not logged in/></p>
+        </c:if> 
+
+
+
 
 
     </body>

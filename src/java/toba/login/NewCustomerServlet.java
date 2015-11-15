@@ -40,27 +40,9 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zipcode = request.getParameter("zipcode");
             String email = request.getParameter("email");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
 
             // store data in User object
-            User user = new User(firstName, lastName, phone, address, city, state, zipcode, email, username, password);
-            // store the User object as a session attribute
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-
-	        // store the data in a User object
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
-            user.setPhone(phone);
-            user.setAddress(address);
-            user.setCity(city);
-            user.setState(state);
-            user.setZipcode(zipcode);
-            user.setEmail(email);
-            user.setUsername(lastName + zipcode);
-            String temp_password = "welcome1";
-            user.setPassword(temp_password);
+            User user = new User(firstName, lastName, phone, address, city, state, zipcode, email);
 
             // validate the parameters
             String message;
@@ -71,6 +53,11 @@ public class NewCustomerServlet extends HttpServlet {
             } else {
                 message = "";
                 url = "/success.jsp";
+
+                
+                // store the User object as a session attribute
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 UserDB.insert(user);
 
             }

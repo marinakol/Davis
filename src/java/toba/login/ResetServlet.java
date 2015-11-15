@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import toba.business.User;
 
 public class ResetServlet extends HttpServlet {
 
@@ -17,19 +18,18 @@ public class ResetServlet extends HttpServlet {
 
         try {
             HttpSession session = request.getSession();
-            String cpass = (String) session.getAttribute("password");
-            String uname = (String) session.getAttribute("username");
+            User user = (User)session.getAttribute("user");
 
             if (passwordOld == null || passwordOld.isEmpty() || passwordNew == null || passwordNew.isEmpty()) {
                 request.setAttribute("msg", "All fields are required");
                 getServletContext().getRequestDispatcher("/password_reset.jsp").forward(request, response);
 
-            } else if (!cpass.equals(passwordOld)) {
+            } else if (!user.getPassword().equals(passwordOld)) {
                 request.setAttribute("msg", "Old password is not valid");
                 getServletContext().getRequestDispatcher("/password_reset.jsp").forward(request, response);
             } else {
-
-                session.setAttribute("password", passwordNew);
+                user.setPassword(passwordNew);
+                session.setAttribute("user", user);
                 getServletContext().getRequestDispatcher("/account_activity.jsp").forward(request, response);
             }
         } catch (Exception e) {
