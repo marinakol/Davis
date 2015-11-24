@@ -41,6 +41,15 @@
         <servlet-name>ResetServlet</servlet-name>
         <url-pattern>/reset</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    <servlet-name>TransferServlet</servlet-name>
+    <servlet-class>toba.login.TransferServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransferServlet</servlet-name>
+    <url-pattern>/transfer/*</url-pattern>
+  </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

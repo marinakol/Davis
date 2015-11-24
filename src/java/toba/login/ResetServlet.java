@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.business.User;
+import toba.data.UserDB;
 
 public class ResetServlet extends HttpServlet {
 
@@ -19,6 +20,7 @@ public class ResetServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User user = (User)session.getAttribute("user");
+            UserDB.update(user);
 
             if (passwordOld == null || passwordOld.isEmpty() || passwordNew == null || passwordNew.isEmpty()) {
                 request.setAttribute("msg", "All fields are required");

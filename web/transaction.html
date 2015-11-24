@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -20,7 +16,24 @@ and open the template in the editor.
                 <li><a href="new_customer.html">New Customer</a></li>
                 <li><a href="account_activity.html">Account activity</a></li>
                 <li><a href="transaction.html">Transactions</a></li>
-            </ul> 
+            </ul>
+            
+            <form action="transfer" method="post">
+	            <input type="hidden" name="action" value="transfer">        
+	            <label class="pad_top">From:</label>
+	            <input type="radio" name="fromAccount" required style="padding-right:5px">Checking
+	            <input type="radio" name="fromAccount" required>Savings
+	            <br><br>
+	            
+	            <label class="pad_top">To:</label>
+	            <input type="radio" name="toAccount" required style="padding-right:5px">Checking
+	            <input type="radio" name="toAccount" required>Savings<br>
+	            
+	            $<input type="number" name="transferAmount" required><br>
+	            
+	            <label>&nbsp;</label>
+	            <input type="submit" value="Transfer Funds" class="margin_left">
+        	</form> 
 
         </nav>
     </body>

@@ -27,17 +27,14 @@
 
         </nav>
 
-
-
-        <c:if test="${user.firstName != null}">
-            <p>Welcome back, <c:out value='${user.firstName}' /> <c:out value='${user.lastName}' /></p>
-        </c:if>
-        <c:if test="${user.firstName = null}">
-            <p>Not logged in/></p>
-        </c:if> 
-
-
-
+        <c:choose>
+            <c:when test="${not empty user}">
+                <p>Hello, <c:out value='${user.firstName}'/> <c:out value='${user.lastName}' /></p>
+            </c:when>
+            <c:otherwise>
+                <p>Please Log in</p>
+            </c:otherwise>
+        </c:choose>
 
 
     </body>

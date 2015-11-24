@@ -3,6 +3,7 @@ package toba.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import toba.business.User;
 import toba.data.UserDB;
+import toba.business.Account;
+
+import toba.data.AccountDB;
+
+import toba.util.AccountType;
 
 public class NewCustomerServlet extends HttpServlet {
 
@@ -55,10 +61,18 @@ public class NewCustomerServlet extends HttpServlet {
                 url = "/success.jsp";
 
                 
+                 // Create New Accounts
+                Account savings = new Account( user, new BigDecimal(25.00), AccountType.Type.SAVING);
+                Account checking = new Account( user, new BigDecimal(0.00), AccountType.Type.CHECKING);
+                
+                 
+                AccountDB.insert( savings); 
+                AccountDB.insert( checking);
+                
                 // store the User object as a session attribute
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                UserDB.insert(user);
+                UserDB.insert(user); 
 
             }
             request.setAttribute("user", user);
