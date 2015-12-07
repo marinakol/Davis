@@ -2,14 +2,12 @@ package toba.login;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.business.User;
 import toba.data.UserDB;
-
 public class ResetServlet extends HttpServlet {
 
     @Override
@@ -20,7 +18,7 @@ public class ResetServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             User user = (User)session.getAttribute("user");
-            UserDB.update(user);
+            
 
             if (passwordOld == null || passwordOld.isEmpty() || passwordNew == null || passwordNew.isEmpty()) {
                 request.setAttribute("msg", "All fields are required");
@@ -31,8 +29,9 @@ public class ResetServlet extends HttpServlet {
                 getServletContext().getRequestDispatcher("/password_reset.jsp").forward(request, response);
             } else {
                 user.setPassword(passwordNew);
+                UserDB.update(user);
                 session.setAttribute("user", user);
-                getServletContext().getRequestDispatcher("/account_activity.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();

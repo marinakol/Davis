@@ -1,19 +1,30 @@
 package toba.business;
 
 import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import toba.util.AccountType;
-
+@Entity
 public class Transaction {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+        private Long transId;
 	private User user;
-	private AccountType.Type fromType;
-	private AccountType.Type toType;
+	private String fromType;
+	private String toType;
 	private BigDecimal amount;
 	
-	public Transaction( User user, AccountType.Type fromType, AccountType.Type toType, BigDecimal amount) {
+        public Transaction() {
+        }
+        
+	public Transaction( User user, AccountType fromType, AccountType toType, BigDecimal amount) {
 		this.user = user;
-		this.fromType = fromType;
-		this.toType = toType;
+		this.fromType = ( fromType == AccountType.SAVING) ? "SAVINGS" : "CHECKING";
+		this.toType = ( toType == AccountType.SAVING) ? "SAVINGS" : "CHECKING";
 		this.amount = amount;
 	}
 	
@@ -24,17 +35,17 @@ public class Transaction {
 		this.user = user;
 	}
 	
-	public AccountType.Type getFromType() {
+	public String getFromType() {
 		return this.fromType;
 	}
-	public void setFromType( AccountType.Type fromType) {
+	public void setFromType( String fromType) {
 		this.fromType = fromType;
 	}
 	
-	public AccountType.Type getToType() {
+	public String getToType() {
 		return this.toType;
 	}
-	public void setToType( AccountType.Type toType) {
+	public void setToType( String toType) {
 		this.toType = toType;
 	}
 	

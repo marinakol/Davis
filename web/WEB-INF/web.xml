@@ -50,6 +50,16 @@
     <servlet-name>TransferServlet</servlet-name>
     <url-pattern>/transfer/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BalDtlsServlet</servlet-name>
+    <servlet-class>toba.login.BalDtlsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BalDtlsServlet</servlet-name>
+    <url-pattern>/balance/*</url-pattern>
+  </servlet-mapping>
+  
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class User implements Serializable {
 
@@ -22,6 +23,7 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
+
 
     public User() {
         firstName = "";
@@ -48,7 +50,7 @@ public class User implements Serializable {
         username = lastName + zipcode;
         password = "welcome1";
     }
-
+    
     public Long getUserID() {
         return userId;
     }
@@ -57,6 +59,7 @@ public class User implements Serializable {
         this.userId = userId;
         
     }
+    
     public String getFirstName() {
         return firstName;
     }

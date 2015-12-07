@@ -3,37 +3,71 @@ package toba.data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import toba.business.User;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+
+import toba.business.User;
 
 public class UserDB {
 
     public static void insert(User user) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        //EntityTransaction trans = em.getTransaction();
-        //trans.begin();        
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();        
         try {
             em.persist(user);
-           // trans.commit();
+            trans.commit();
         } catch (Exception e) {
-            System.out.println(e);
-            //trans.rollback();
+            e.printStackTrace();
+            trans.rollback();
         } finally {
             em.close();
         }
     }
-public static void update(User user) {
+
+    public static void update(User user) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-       // EntityTransaction trans = em.getTransaction();
-       // trans.begin();       
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();       
         try {
             em.merge(user);
-           // trans.commit();
+            trans.commit();
         } catch (Exception e) {
             System.out.println(e);
-           // trans.rollback();
+            trans.rollback();
         } finally {
             em.close();
         }
-    }}
+    }
+
+    public static void delete(User user) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();        
+        try {
+            em.remove(em.merge(user));
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }       
+    }
+
+    public static User selectUser(String email) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u FROM User u " +
+                "WHERE u.email = :email";
+        TypedQuery<User> q = em.createQuery(qString, User.class);
+        q.setParameter("email", email);
+        try {
+            User user = q.getSingleResult();
+            return user;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+}

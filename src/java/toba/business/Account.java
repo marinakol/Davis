@@ -1,35 +1,55 @@
 package toba.business;
 
 import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import toba.util.AccountType.Type;
+import toba.util.AccountType;
 
+@Entity
 public class Account {
-	
-	public Type acctType;
-	public BigDecimal balance;
+    
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        Long id;
+	public AccountType acctType = AccountType.SAVING;
+	public BigDecimal balance = new BigDecimal(0);
+        
+        //@ManyToOne
 	public User usr;
-
+        
+        User user = null;
+        
+        
+       // @OneToMany(fetch=EAGER, cascade=CascadeType.PERSIST)
+       // private List<LineItem> lineItems;
+        
 	public Account() {
 	}
 	
-	public Account(User usr, BigDecimal balance, Type acctType) {
+	public Account(User usr, BigDecimal balance, AccountType acctType) {
 		this.usr = usr;
 		this.balance = balance;
 		this.acctType = acctType;
 	}
-	
+        
 	public void credit( BigDecimal creditAmount) {
-		balance.add( creditAmount);
+            
+            this.balance = this.balance.add( creditAmount);
+            
 	}
 	public void debit( BigDecimal debitAmount) {
-		balance.subtract( debitAmount);
+            	
+            this.balance = this.balance.subtract( debitAmount);
+            
 	}
 	
-	public Type getAccountType() {
+	public AccountType getAccountType() {
 		return acctType;
 	}
-	public void setAccountType( Type acctType) {
+	public void setAccountType( AccountType acctType) {
 		this.acctType = acctType;
 	}
 	
