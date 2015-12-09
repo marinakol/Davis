@@ -13,8 +13,13 @@
             <li><a href="new_customer.html">New Customer</a></li>
             <li><a href="transaction">Account activity</a></li>
             <li><a href="balance">Transactions</a></li>
+            <li> <a href="admin/login.html">Admin login</a></li>
         </ul> 
     </nav>
+    
+    <p><a href="https://localhost:8443/TOBA/new_customer.html">Use secure connection</a></p>
+    <p><a href="admin">View the Admin applications</a></p>
+    
     
     <%  String totalSavingBalance = (String)request.getAttribute("totalSavingBalance");
         String totalCheckingBalance = (String)request.getAttribute("totalCheckingBalance");

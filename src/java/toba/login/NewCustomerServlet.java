@@ -3,6 +3,7 @@ package toba.login;
 import java.io.IOException;
 
 import java.math.BigDecimal;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,12 @@ import toba.data.UserDB;
 import toba.business.Account;
 import toba.data.AccountDB;
 import toba.util.AccountType;
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import toba.util.PasswordUtil;
 
 
 public class NewCustomerServlet extends HttpServlet {

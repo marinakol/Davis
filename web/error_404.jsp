@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:import url="/includes/header.html" />
 <!DOCTYPE html>

@@ -1,6 +1,7 @@
 package toba.login;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,17 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import toba.business.User;
 import toba.data.UserDB;
+import toba.util.PasswordUtil;
+
 public class ResetServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
         String passwordOld = request.getParameter("passwordOld");
         String passwordNew = request.getParameter("passwordNew");
 
+
         try {
             HttpSession session = request.getSession();
-            User user = (User)session.getAttribute("user");
-            
+            User user = (User) session.getAttribute("user");
 
             if (passwordOld == null || passwordOld.isEmpty() || passwordNew == null || passwordNew.isEmpty()) {
                 request.setAttribute("msg", "All fields are required");
@@ -36,5 +40,8 @@ public class ResetServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-}
+    }}
+
+    
+        
+        
